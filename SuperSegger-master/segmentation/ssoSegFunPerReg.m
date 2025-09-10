@@ -78,7 +78,7 @@ end
         maskdir = [extractBefore(dataname, [filesep 'seg' filesep]) filesep 'masks' filesep];
         % Check for png or tif/tiff files in maskdir
         pngFiles = ~isempty(dir(fullfile(maskdir, '*.png')));
-        tifFiles = ~isempty(dir(fullfile(maskdir, '*.tif')))
+        tifFiles = ~isempty(dir(fullfile(maskdir, '*.tif')));
         tiffFiles = ~isempty(dir(fullfile(maskdir, '*.tiff')));
         if ~pngFiles && ~tifFiles && ~tiffFiles
             % If no valid mask files found, warn the user
@@ -90,10 +90,8 @@ end
     filename = char(extractBetween(dataname,[filesep 'seg' filesep],'_seg.mat')); %generalized to filesep 
     if pngFiles
         maskpath = strcat(maskdir,filename,'c1_cp_masks.png'); %get path of omnipose mask  
-    elseif tifFiles
-        maskpath = strcat(maskdir,filename,'c1_cp_masks.tif'); 
-    elseif
-        maskpath = strcat(maskdir,filename,'c1_cp_masks.tiff'); 
+    elseif tifFiles || tiffFiles
+        maskpath = strcat(maskdir,filename,'cp_masks.tif');
     else
         error('No valid mask files found in the specified directory.');
     end
