@@ -216,7 +216,7 @@ else
         
         dirname_xy = dirname_list{j};
         intProcessXY( dirname_xy, skip, nc, num_c, clean_flag, ...
-            CONST, startEnd, crop_box_array{nxy(j)}, autoomni, num_xy)
+            CONST, startEnd, crop_box_array{j}, autoomni, num_xy)
         
         if workers || ~CONST.parallel.show_status
             disp( ['BatchSuperSeggerOpti: No status bar. xy ',num2str(j), ...
